@@ -1,9 +1,115 @@
 <?php
+session_start();
+
+if(!empty($_POST['email2']) && !empty($_POST['mdp2'])) {
+    
+    $host = 'localhost';
+    $dbname = 'vitegourmand';
+    $username = 'root';
+    $password = '';
+    
+    $emailutilisateur = $_POST['email2'];
+    $mdputilisateur = $_POST['mdp2'];
+    
+    
+    
+    try {
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+        
+        $requete = $pdo->prepare("SELECT * FROM utilisateur WHERE email = :email");
+        $requete->bindValue(':email', $emailutilisateur);
+        $requete->execute();
+        $utilisateur = $requete->fetch();
+        
+        if($utilisateur === false){
+            echo 'Erreur : utilisateur non trouvé';
+        } elseif (password_verify($mdputilisateur, $utilisateur->motdepasse) && $utilisateur->role ==='utilisateur') {
+            $_SESSION['utilisateur_id'] = $utilisateur->id_utilisateur;
+            $_SESSION['utilisateur_prenom'] = $utilisateur->prenom;
+            $_SESSION['utilisateur_email'] = $utilisateur->email;
+            $_SESSION['utilisateur_role'] = $utilisateur->role;
+            header('Location: espaceutilisateur.php');
+            exit();
+        } elseif (password_verify($mdputilisateur, $utilisateur->motdepasse) && $utilisateur->role ==='employe') {
+            $_SESSION['utilisateur_id'] = $utilisateur->id_utilisateur;
+            $_SESSION['utilisateur_prenom'] = $utilisateur->prenom;
+            $_SESSION['utilisateur_email'] = $utilisateur->email;
+            $_SESSION['utilisateur_role'] = $utilisateur->role;
+            header('Location: espaceemploye.php');
+            exit();
+        } elseif (password_verify($mdputilisateur, $utilisateur->motdepasse) && $utilisateur->role ==='administrateur') {
+            $_SESSION['utilisateur_id'] = $utilisateur->id_utilisateur;
+            $_SESSION['utilisateur_prenom'] = $utilisateur->prenom;
+            $_SESSION['utilisateur_email'] = $utilisateur->email;
+            $_SESSION['utilisateur_role'] = $utilisateur->role;
+            header('Location: espaceadministrateur.php');
+            exit();
+        
+        } else {
+            echo 'Mot de passe incorrect';
+        }
+        
+    } catch(PDOException $e) {
+        error_log($e->getMessage());
+        echo 'Erreur de connexion à la base de données';
+    }
+}
+
+
+if(!empty($_POST['nom1']) && !empty($_POST['prenom1']) && !empty($_POST['tel1']) && !empty($_POST['email1'] && !empty($_POST['mdp1']) && !empty($_POST['adresse1'])) ) 
+{
+
+    $host = 'localhost';
+    $dbname = 'vitegourmand';
+    $username = 'root';
+    $password = '';
+
+    $u_nom = $_POST['nom1'];
+    $u_prenom = $_POST['prenom1'];
+    $u_tel1 = $_POST['tel1'];
+    $u_email1 = $_POST['email1'];
+    $u_adresse1 = $_POST['adresse1'];
+    $u_role='utilisateur';
+
+    $u_mdp1 = $_POST['mdp1'];
+    $hash_mdp = password_hash($u_mdp1, PASSWORD_DEFAULT);
+
+
+    try {
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+        
+        $requete = $pdo->prepare("INSERT INTO utilisateur (id_utilisateur, email, motdepasse, nom, prenom, telephone, adresse_postale, role )
+        VALUES(?, ?, ?, ?, ?, ?, ?, ?) ");
+        $requete->execute(['NULL', $u_email1, $hash_mdp, $u_nom, $u_prenom, $u_tel1, $u_adresse1, $u_role]);
+
+        
+    } catch(PDOException $e) {
+        error_log($e->getMessage());
+        echo 'Erreur de connexion à la base de données';
+    }
+    
+
+
+}
+
+?>
+
+
+
+
+
+<?php
 require 'elements/header.php';
 ?>
+
 <div class="conteneur1">
 
 <h2 class="ttrconnexion">CONNEXION</h2>
+
 
 
 <div class="conteneurconnexions">
@@ -60,7 +166,7 @@ require 'elements/header.php';
                         
                     <div class="form-group">
                     <label for="email2">Email:</label>
-                    <input type="email" id="email2" name="email2" class="form-control" >
+                    <input type="text" id="email2" name="email2" class="form-control" >
                     </div>
 
                     <div class="form-group">
