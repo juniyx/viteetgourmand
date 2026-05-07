@@ -26,25 +26,25 @@ if(!empty($_POST['email2']) && !empty($_POST['mdp2'])) {
         if($utilisateur === false){
             echo 'Erreur : utilisateur non trouvé';
         } elseif (password_verify($mdputilisateur, $utilisateur->motdepasse) && $utilisateur->role ==='utilisateur') {
-            $_SESSION['utilisateur_id'] = $utilisateur->id_utilisateur;
-            $_SESSION['utilisateur_prenom'] = $utilisateur->prenom;
-            $_SESSION['utilisateur_email'] = $utilisateur->email;
-            $_SESSION['utilisateur_role'] = $utilisateur->role;
-            header('Location: espaceutilisateur.php');
+            $_SESSION['utilisateur_id']= $utilisateur->id_utilisateur;
+            $_SESSION['utilisateur_prenom']= $utilisateur->prenom;
+            $_SESSION['utilisateur_email']= $utilisateur->email;
+            $_SESSION['utilisateur_role']= $utilisateur->role;
+            header("Location: espaceutilisateur.php?id=$utilisateur->id_utilisateur");
             exit();
         } elseif (password_verify($mdputilisateur, $utilisateur->motdepasse) && $utilisateur->role ==='employe') {
             $_SESSION['utilisateur_id'] = $utilisateur->id_utilisateur;
             $_SESSION['utilisateur_prenom'] = $utilisateur->prenom;
             $_SESSION['utilisateur_email'] = $utilisateur->email;
             $_SESSION['utilisateur_role'] = $utilisateur->role;
-            header('Location: espaceemploye.php');
+            header("Location: espaceemploye.php?id=$utilisateur->id_utilisateur");
             exit();
         } elseif (password_verify($mdputilisateur, $utilisateur->motdepasse) && $utilisateur->role ==='administrateur') {
             $_SESSION['utilisateur_id'] = $utilisateur->id_utilisateur;
             $_SESSION['utilisateur_prenom'] = $utilisateur->prenom;
             $_SESSION['utilisateur_email'] = $utilisateur->email;
             $_SESSION['utilisateur_role'] = $utilisateur->role;
-            header('Location: espaceadministrateur.php');
+            header("Location: espaceadministrateur.php?id=$utilisateur->id_utilisateur");
             exit();
         
         } else {
@@ -173,9 +173,10 @@ require 'elements/header.php';
                     <label for="mdp2">Mot de Passe:</label>
                     <input type="password" id="mdp2" name="mdp2" class="form-control" >
                     </div>
-
+                     
                     <button type="submit" class="btn btn-dark" id="connexionutilisateur">CONNEXION</button>
-                    
+                    <a id="reinimdp" class="btn btn-warning" href="">Réinitialiser le mot de passe</a>
+                   
                 </form>
 
     </div>

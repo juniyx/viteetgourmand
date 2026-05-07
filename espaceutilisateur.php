@@ -1,10 +1,26 @@
 <?php
+session_start();
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
+?>
+
+<?php
 require 'elements/header.php';
 ?>
 <div class="conteneur1">
 
+<H1 class="epeutilisateur">ESPACE UTILISATEUR</H1>;
 
-<H1> ESPACE UTILISATEUR</H1>
+<div class="navbarresecond">
+    <ul class="navsecond">
+    <li><a href="" style="text-decoration:none" class="liensecond">INFORMATIONS COMPTE</a></li>
+    <li><a href="" style="text-decoration:none" class="liensecond">GESTION DES COMMANDES</a></li>
+    <li><a href="" style="text-decoration:none" class="liensecond">LE SUIVI DES COMMANDES ACCEPTEES</a></li>
+    </ul>
+</div>
+
+
 
 
 

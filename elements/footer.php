@@ -30,7 +30,7 @@
 
 
                           <div class="bandeau3">
-                            <div class="textebas"> Copyright 1997-2026 GuyFanyCaballeroStudio. Tous droits réservés </div>
+                            <div class="textebas"> Copyright 2026 GuyFanyCaballeroStudio. Tous droits réservés </div>
                           </div>
                   
                   
