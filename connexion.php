@@ -99,11 +99,13 @@ if(!empty($_POST['nom1']) && !empty($_POST['prenom1']) && !empty($_POST['tel1'])
 ?>
 
 
-
+<?php
+$notifcreation= $_GET['compte']??'';
+?>
 
 
 <?php
-require 'elements/header.php';
+require 'header.php';
 ?>
 
 <div class="conteneur1">
@@ -115,6 +117,10 @@ require 'elements/header.php';
 <div class="conteneurconnexions">
 
     <div class="formconnexion1">
+        
+       <?php if($notifcreation ==='creation') { ?>
+        <div class="alert alert-warning">Pour procéder à votre commande il faut effectuer une création de compte</div>
+        <?php } ?>
 
         <h5 class="creationcompte">VEUILLEZ COMPLETER LES INFORMATIONS DEMANDEES POUR LA CREATION D'UN COMPTE UTILISATEUR </h5>
         <p class="creationinfo">Si vous ne disposez pas de compte, veuillez completer le formulaire.Par la suite vous disposerez d'un espace utilisateur afin de réaliser vos commandes.</p>
@@ -175,7 +181,7 @@ require 'elements/header.php';
                     </div>
                      
                     <button type="submit" class="btn btn-dark" id="connexionutilisateur">CONNEXION</button>
-                    <a id="reinimdp" class="btn btn-warning" href="">Réinitialiser le mot de passe</a>
+                    <a id="reinimdp" class="btn btn-warning" href="reinitialisermdp.php?">Réinitialiser le mot de passe</a>
                    
                 </form>
 
@@ -187,5 +193,5 @@ require 'elements/header.php';
 
 
 <?php                
- require 'elements/footer.php';
+ require 'footer.php';
 ?>

@@ -1,5 +1,5 @@
 <?php
-require 'elements/header.php';
+require 'header.php';
 ?>
 <div class="conteneur1">
 
@@ -31,5 +31,5 @@ require 'elements/header.php';
 </div>
 
 <?php                
- require 'elements/footer.php';
+ require 'footer.php';
 ?>

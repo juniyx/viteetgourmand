@@ -1,10 +1,14 @@
 <?php
+session_start();
+
 $host = 'localhost';
 $dbname = 'vitegourmand';
 $username = 'root';
 $password = '';
 
 $menu_idd= $_GET['menu'];
+
+$user_id = $_SESSION['utilisateur_id'] ?? '';
 
 try {
     
@@ -26,8 +30,9 @@ $menu= $requete->fetch();
 ?>
 
 
+
 <?php
-require 'elements/header.php';
+require 'header.php';
 ?>
 <div class="conteneur1">
 
@@ -43,21 +48,14 @@ require 'elements/header.php';
         <div class="present_menu" ><?=$menu->presentation ?></div>
         <div class="prix_nombre" >Le nombre minimum de personnes pour commander est de <?=$menu->nombre_personne_minimum ?> pour un prix de <?=$menu->prix_parpersonne?>€ par personne.</div>
         <div class="descrip_menu"><?=$menu->description ?></div>
-        <a  href="" class="btn btn-outline-success" id="commander">COMMANDER</a>
-
+        
+        <a href= <?php echo isset($_SESSION['utilisateur_id']) ? "commander.php?id=$user_id&menu=$menu_idd" : 'connexion.php?compte=creation'; ?> 
+        class="btn btn-outline-success" id="commander">COMMANDER</a>
+         
     </div>
 </div>
 
 
-
-
-
-
-
-
-
-
-
 <?php                
- require 'elements/footer.php';
+ require 'footer.php';
 ?>

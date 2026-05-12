@@ -6,7 +6,7 @@ echo '</pre>';
 ?>
 
 <?php
-require 'elements/header.php';
+require 'header.php';
 ?>
 <div class="conteneur1">
 
@@ -20,11 +20,6 @@ require 'elements/header.php';
     </ul>
 </div>
 
-
-
-
-
-
 <?php                
- require 'elements/footer.php';
+ require 'footer.php';
 ?>

@@ -24,7 +24,7 @@ $menus= $requete->fetchAll();
 
 
 <?php
-require 'elements/header.php';
+require 'header.php';
 ?>
 <div class="conteneur1">
 
@@ -32,7 +32,7 @@ require 'elements/header.php';
 
 foreach($menus as $menu) { ?>
 <div class="portemenu">
-    <img class="imgmenutous" src= "./images/<?= $menu->image1?>.jpeg" width="95%" height="350px"></img>>
+    <img class="imgmenutous" src= "./images/<?= $menu->image1?>.jpeg" width="95%" height="350px"></img>
     <h2 class="ttrmenustous"><?=$menu->titre?></h2>
     <div class="presmenutous"><?=$menu->presentation ?></div>    
     <div  class="commandemenustous">
@@ -42,8 +42,8 @@ foreach($menus as $menu) { ?>
     </div>
 </div>
 
-<?php } ?>
+<?php }?>
 
 <?php                
- require 'elements/footer.php';
+require 'footer.php';
 ?>

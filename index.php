@@ -1,5 +1,5 @@
 <?php
-require 'elements/header.php';
+require 'header.php';
 ?>
 
 <div class="conteneur1">
@@ -26,5 +26,5 @@ require 'elements/header.php';
     <li class="ttradescrippoint" >Un accompagnement personnalisé de la conception à la réalisation</li>
 </ul>
 <?php                
- require 'elements/footer.php';
+ require 'footer.php';
 ?>
