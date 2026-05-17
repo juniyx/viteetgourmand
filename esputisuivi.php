@@ -47,27 +47,9 @@ require 'header.php';
 </div>
 
 
-<h3 class="bnvuser" >Bienvenu <?= $userrecup->prenom ?></h3>
 
-<h4 class="pstcommande">Voici la liste de vos dernières commandes </h4>
-<?php
-    foreach($commandesrecup as $unecommande) { ?>
-     <div class="panneaucom" >
-            <div class="rsmcommande"> 
-            <div class="rsmcom"> Numéro de commande : <?=$unecommande->numero_commande ?></div>
-            <div class="rsmcom"> Date commande : <?=$unecommande->date_commande?></div>
-            <div class="rsmcom"> Menu commandé : <?=$unecommande->menu?></div>
-            <div class="rsmcom"> Nombre de personnes : <?=$unecommande->nombre_personne ?></div>
-            <div class="rsmcom"> Prix total du menu  : <?= $unecommande->prix_menu?>€ TTC</div>
-            <div class="rsmcom"> Date et Heure de livraison : <?=$unecommande->date_livraison?></div>
-            <div class="rsmcom"> Adresse de livraison : <?=$unecommande->adresse_livraison ?></div>
-        </div>
 
-            <img class="imgresumecom" src= "./images/repasnoel7.jpeg" width="75%" height="200px"></img>
-        </div>
-    <?php }?>
-       
- 
+
 
 <?php                
  require 'footer.php';

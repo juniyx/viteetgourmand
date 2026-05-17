@@ -2,6 +2,8 @@
 if(session_status()=== PHP_SESSION_NONE){
   session_start();
 };
+
+$user_id= $_SESSION['utilisateur_id'] ?? '' ;
 ?>
 
 <!DOCTYPE html>
@@ -54,11 +56,11 @@ if(session_status()=== PHP_SESSION_NONE){
       
 
       if(isset($_SESSION['utilisateur_id']) && $_SESSION['utilisateur_role']==='utilisateur'){?>
-       <a href="espaceutilisateur.php" class="btn btn-outline-success">ESPACE UTILISATEUR</a>
+       <a href="espaceutilisateur.php?id=<?=$user_id?>" class="btn btn-outline-success">ESPACE UTILISATEUR</a>
        <?php }elseif(isset($_SESSION['utilisateur_id']) && $_SESSION['utilisateur_role']==='employe') {?> 
-        <a href="espaceemploye.php" class="btn btn-outline-success">ESPACE EMPLOYE</a>  
+        <a href="espaceemploye.php?id=<?=$user_id?>" class="btn btn-outline-success">ESPACE EMPLOYE</a>  
       <?php } elseif (isset($_SESSION['utilisateur_id']) && $_SESSION['utilisateur_role']==='administrateur'){?> 
-        <a href="espaceadministrateur.php" class="btn btn-outline-success">ESPACE ADMINISTRATEUR</a>   
+        <a href="espaceadministrateur.php?id=<?=$user_id?>" class="btn btn-outline-success">ESPACE ADMINISTRATEUR</a>   
         <?php }?>
       
       <?php

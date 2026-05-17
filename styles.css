@@ -1,3 +1,7 @@
+html{
+   max-width: 1280px;
+}
+
 body{
    max-width: 1280px; 
 }
@@ -375,6 +379,94 @@ img{
    margin-top: 1%;
 }
 
+.resucom{
+  max-width : 1280px;
+  margin-left: 3%;
+  margin-top: 3%;
+   
+
+   display: grid;
+   grid-template-columns: 50% 50%;
+   grid-template-rows: auto;
+   justify-items:center;
+   align-items: center; 
+}
+
+.resumecommandettr{
+    color: rgb(148, 148, 225);
+}
+
 .resumecommande{
    color: aliceblue;
 }
+
+
+
+.bnvuser{
+   color: rgb(209, 212, 128);
+   margin-top: 1%;
+   margin-left: 3%;
+}
+
+.pstcommande{
+    color: rgb(209, 212, 128);
+   margin-left: 3%;
+}
+
+.rsmcom{
+   color: rgb(227, 229, 166);
+  
+}
+
+
+.panneaucom{
+
+  max-width : 1280px;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 3%;
+  background-color: rgb(19, 15, 15);
+  border-radius: 10px;
+
+   display: grid;
+   grid-template-columns: 50% 50%;
+   grid-template-rows: 250px;
+   justify-items:center;
+   align-items: center; 
+
+}
+
+
+
+.infoperso{
+
+  max-width : 1280px;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 3%;
+  color: rgb(227, 229, 166);
+  
+  display: grid;
+  grid-template-columns: 40% 60%;
+  justify-items:center;
+  align-items: center; 
+   
+  
+}
+
+.persoencours{
+background-color: rgb(19, 15, 15);
+border-radius: 10px;
+margin-right: 5%;
+margin-left: 1%;
+}
+
+.perso{
+   margin-left: 3%;
+
+}
+
+.persottr{
+   margin-left: 3%;
+}
+
