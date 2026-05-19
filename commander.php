@@ -109,9 +109,9 @@ require 'header.php';
         <div class="form-group">
             <label for="menuselector">confirmez le menu souhaité:</label>
             <select id="menuselector" name="menuselector" class="form-control" value="<?=$menu->titre ?>">
-                <option value="menumoment">Menu du Moment</option>
-                <option value="menunoel">Menu de Noël</option>
-                <option value="menupaques">Menu de Pâques</option>
+                <option value="Menu du Moment">Menu du Moment</option>
+                <option value="Menu de Noël">Menu de Noël</option>
+                <option value="Menu de Pâques">Menu de Pâques</option>
             </select>
         </div>
 

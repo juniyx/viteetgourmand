@@ -1,35 +1,53 @@
 <?php
-
-$heuredumoment=date('Y-m-d');
-echo $heuredumoment;
-
 session_start();
-echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';
+?>
+
+<?php
+$host = 'localhost';
+$dbname = 'vitegourmand';
+$username = 'root';
+$password = '';
 
 
-$modifnom = $_POST['nom4'];
-$modifprenom = $_POST['prenom4'];
-$modiftel= $_POST['tel4'];
-$modifemail= $_POST['email4'];
-$modifadresse =$_POST['adresse4'];
+$user_id = $_SESSION['utilisateur_id'];
+
+$pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+
+$requete16 = $pdo->prepare("SELECT numero_commande, menu, nombre_personne, adresse_livraison, date_livraison, heure_livraison, prix_menu, date_commande, prix_livraison, statut, id_utilisateur 
+FROM commande  ORDER BY date_commande DESC LIMIT 50");
+$requete16->execute();
+$commandes = $requete16->fetchAll();
+?>
 
 
 
-$requete8= $pdo->prepare("UPDATE utilisateur SET  nom = $modifnom, prenom= $modifprenom, telephone=$modiftel, email=$modifemail, adresse_postale=$modifadresse
-WHERE id_utilisateur =:idutil");
-$requete8->bindvalue(':idutil', $user_id);
-$requete8->execute();
 
 
+<?php
+require 'header.php';
+?>
 
+<div class="conteneur1">
+
+<H1 class="epeemploye">ESPACE EMPLOYE</H1>
+
+
+<div class="navbarresecond">
+    <ul class="navsecond">
+    <li><a href="employecompte.php?id=<?=$user_id?>" style="text-decoration:none" class="liensecond">INFORMATIONS COMPTE</a></li>
+    <li><a href="employemenus.php?id=<?=$user_id?>" style="text-decoration:none" class="liensecond">GESTION DES MENUS</a></li>
+    <li><a href="employecommande.php?id=<?=$user_id?>" style="text-decoration:none" class="liensecond">GESTION ET VALIDATION DES COMMANDES </a></li>
+    <li><a href="comclients.php?id=<?=$user_id?>" style="text-decoration:none" class="liensecond">TRAITEMENT DES COMMENTAIRES CLIENTS </a></li>
+    </ul>
+</div>
 
 
 <table  class="tablecommande" cellpadding="10" cellspacing="0">
-                <thead>
+                <thead class="entetetableau">
                     <tr>
-                        <th>ID COMMANDE</th>
+                        <th>NUMERO COMMANDE</th>
                         <th>ID UTILISATEUR</th>
                         <th>MENU</th>
                         <th>DATE COMMANDE</th>
@@ -38,8 +56,6 @@ $requete8->execute();
                         <th>PRIX DU MENU</th>
                         <th>ADRESSE DE LIVRAISON</th>
                         <th>DATE DE LIVRAISON</th>
-                        <th>HEURE DE LIVRAISON </th>
-                        <th>PRIX DE LA LIVRAISON</th>
                         <th>MODIFIER</th>
                         <th>SUPPRIMER</th>
 
@@ -57,11 +73,26 @@ $requete8->execute();
                         <td><?= htmlspecialchars($commande->prix_menu) ?></td>
                         <td><?= htmlspecialchars($commande->adresse_livraison) ?></td>
                         <td><?= htmlspecialchars($commande->date_livraison) ?></td>
-                        <td><?= htmlspecialchars($commande->heure_livraison) ?></td>
-                        <td><?= htmlspecialchars($commande->prix_livraison) ?></td>
                         <td><a href="" class="btn btn-warning" >Modifier</a></td>
                         <td><a href="" class="btn btn-danger"  onclick="return confirm('Confirmer suppression ?')">Supprimer</a> </td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+<?php                
+ require 'footer.php';
+?>

@@ -1,4 +1,51 @@
 <?php
+session_start();
+?>
+
+<?php
+$host = 'localhost';
+$dbname = 'vitegourmand';
+$username = 'root';
+$password = '';
+
+
+$user_id = $_SESSION['utilisateur_id'];
+
+if(!empty($_POST['titre']) && !empty($_POST['email3']) && !empty($_POST['message']) ) 
+{
+
+    $host = 'localhost';
+    $dbname = 'vitegourmand';
+    $username = 'root';
+    $password = '';
+
+    $message_titre = $_POST['titre'];
+    $message_email = $_POST['email3'];
+    $message_contact = $_POST['message'];
+    
+
+    try {
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+        
+        $requete16 = $pdo->prepare("INSERT INTO contact (id_message, titre, email, message_contact)
+        VALUES(?, ?, ?, ?) ");
+        $requete16->execute([NULL, $message_titre, $message_email , $message_contact]);
+
+        
+    } catch(PDOException $e) {
+        error_log($e->getMessage());
+        echo 'Erreur de connexion à la base de données';
+    }
+    
+
+
+}
+?>
+
+
+<?php
 require 'header.php';
 ?>
 <div class="conteneur1">
@@ -10,17 +57,17 @@ require 'header.php';
     <form action="" method="POST">
             
         <div class="form-group">
-            <label for="nom">Titre:</label>
-            <input type="text" name="nom" id="nom" class="form-control">
+            <label for="titre">Titre:</label>
+            <input type="text" name="titre" id="titre" class="form-control">
         </div>
 
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" class="form-control" >
+            <label for="email3">Email:</label>
+            <input type="email" id="email3" name="email3" class="form-control" >
         </div>
 
         <div class="form-group">
-            <label for="nom">Message:</label>
+            <label for="message">Message:</label>
             <textarea type="text" name="message" id="message" class="form-control"></textarea>
         </div>
 

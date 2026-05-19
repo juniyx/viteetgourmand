@@ -18,11 +18,11 @@ $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
 
 
-$requete9 = $pdo->prepare("SELECT numero_commande, menu, nombre_personne, adresse_livraison, date_livraison, heure_livraison, prix_menu, date_commande, prix_livraison, statut, id_utilisateur 
+$requete15 = $pdo->prepare("SELECT numero_commande, menu, nombre_personne, adresse_livraison, date_livraison, heure_livraison, prix_menu, date_commande, prix_livraison, statut, id_utilisateur 
 FROM commande WHERE id_utilisateur =:idutil ORDER BY date_commande DESC LIMIT 50");
-$requete9->bindvalue(':idutil', $user_id);
-$requete9->execute();
-$commandesrecuperees = $requete9->fetchAll();
+$requete15->bindvalue(':idutil', $user_id);
+$requete15->execute();
+$commandesrecuperees = $requete15->fetchAll();
 
 ?>
 
@@ -43,7 +43,7 @@ require 'header.php';
 </div>
 
 
-<table  cellpadding="10" cellspacing="0">
+<table  class=tablecommande cellpadding="10" cellspacing="0">
     <thead>
         <tr>
             <th>NUMERO DE COMMANDE</th>
@@ -68,8 +68,8 @@ require 'header.php';
             <td><?= htmlspecialchars($commandesrecuperee->adresse_livraison) ?></td>
             <td><?= htmlspecialchars($commandesrecuperee->date_livraison) ?></td>
             <td><?= htmlspecialchars($commandesrecuperee->heure_livraison) ?></td>
-            <td><a href="comutimodifier.php?id=<?= $user_id?>">Modifier</a></td>
-            <td><a href="comutisupprimer.php?id=<?= $user_id  ?>" onclick="return confirm('Confirmer suppression ?')">Supprimer</a> </td>
+            <td><a href="comutimodifier.php?id=<?= $user_id?>&idcommande=<?=$commandesrecuperee->numero_commande?>" class="btn btn-warning" >Modifier</a></td>
+            <td><a href="comutisupprimer.php?id=<?= $user_id?>&idcommande=<?=$commandesrecuperee->numero_commande?>" class="btn btn-danger"  onclick="return confirm('Confirmer suppression ?')">Supprimer</a> </td>
         </tr>
         <?php endforeach; ?>
     </tbody>

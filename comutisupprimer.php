@@ -10,52 +10,43 @@ $password = '';
 
 
 $user_id = $_SESSION['utilisateur_id'];
+$idcommande = $_GET['idcommande'] ?? '';
 
+    
 $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
-$requete5= $pdo->prepare("SELECT id_utilisateur, nom, prenom, telephone, email, adresse_postale 
-FROM utilisateur WHERE id_utilisateur =:idutil");
-$requete5->bindvalue(':idutil', $user_id);
-$requete5->execute();
-$userrecup = $requete5->fetch();
 
-$requete13 = $pdo->prepare("SELECT numero_commande, menu, nombre_personne, adresse_livraison, date_livraison, heure_livraison, prix_menu, date_commande, prix_livraison, statut, id_utilisateur 
-FROM commande ORDER BY date_commande DESC LIMIT 15");
+$requete13= $pdo->prepare("DELETE FROM commande WHERE numero_commande =:numcommande");
+$requete13->bindvalue(':numcommande', $idcommande);
 $requete13->execute();
-$commandesrecup = $requete13->fetchAll();
 
+header("Location: esputicommandes.php?id=$user_id");
+exit();
 
 ?>
-
-
-
-
 
 <?php
 require 'header.php';
 ?>
-
 <div class="conteneur1">
 
-<H1 class="epeemploye">ESPACE EMPLOYE</H1>
+<H1 class="epeutilisateur">ESPACE UTILISATEUR</H1>;
 
 
 <div class="navbarresecond">
     <ul class="navsecond">
-    <li><a href="employecompte.php?id=<?=$user_id?>" style="text-decoration:none" class="liensecond">INFORMATIONS COMPTE</a></li>
-    <li><a href="employemenus.php?id=<?=$user_id?>" style="text-decoration:none" class="liensecond">GESTION DES MENUS</a></li>
-    <li><a href="employecommande.php?id=<?=$user_id?>" style="text-decoration:none" class="liensecond">GESTION ET VALIDATION DES COMMANDES </a></li>
-    <li><a href="employecomclients.php?id=<?=$user_id?>" style="text-decoration:none" class="liensecond">TRAITEMENT DES COMMENTAIRES CLIENTS </a></li>
+    <li><a href="esputicompte.php?id=<?=$user_id?>" style="text-decoration:none" class="liensecond">INFORMATIONS COMPTE</a></li>
+    <li><a href="esputicommandes.php?id=<?=$user_id?>" style="text-decoration:none" class="liensecond">GESTION DES COMMANDES</a></li>
+    <li><a href="esputisuivi.php?id=<?=$user_id?>" style="text-decoration:none" class="liensecond">LE SUIVI DES COMMANDES ACCEPTEES</a></li>
     </ul>
 </div>
 
 
 <h3 class="bnvuser" >Bienvenu <?= $userrecup->prenom ?></h3>
 
-<h4 class="pstcommande">Voici la liste des dernières commandes clients </h4>
-
+<h4 class="pstcommande">Voici la liste de vos dernières commandes </h4>
 <?php
     foreach($commandesrecup as $unecommande) { ?>
      <div class="panneaucom" >
@@ -69,13 +60,11 @@ require 'header.php';
             <div class="rsmcom"> Adresse de livraison : <?=$unecommande->adresse_livraison ?></div>
         </div>
 
-            <img class="imgresumecom" src= "./images/repasaf7.jpeg" width="75%" height="200px"></img>
+            <img class="imgresumecom" src= "./images/repasnoel7.jpeg" width="75%" height="200px"></img>
         </div>
     <?php }?>
-
-
-
-
+       
+ 
 
 <?php                
  require 'footer.php';
