@@ -56,11 +56,11 @@ $user_id= $_SESSION['utilisateur_id'] ?? '' ;
       
 
       if(isset($_SESSION['utilisateur_id']) && $_SESSION['utilisateur_role']==='utilisateur'){?>
-       <a href="espaceutilisateur.php?id=<?=$user_id?>" class="btn btn-outline-success">ESPACE UTILISATEUR</a>
+       <a href="espaceutilisateur.php?id=<?=$user_id?>" class="btn btn-outline-secondary"  >ESPACE UTILISATEUR</a>
        <?php }elseif(isset($_SESSION['utilisateur_id']) && $_SESSION['utilisateur_role']==='employe') {?> 
-        <a href="espaceemploye.php?id=<?=$user_id?>" class="btn btn-outline-success">ESPACE EMPLOYE</a>  
+        <a href="espaceemploye.php?id=<?=$user_id?>" class="btn btn-outline-secondary" >ESPACE EMPLOYE</a>  
       <?php } elseif (isset($_SESSION['utilisateur_id']) && $_SESSION['utilisateur_role']==='administrateur'){?> 
-        <a href="espaceadministrateur.php?id=<?=$user_id?>" class="btn btn-outline-success">ESPACE ADMINISTRATEUR</a>   
+        <a href="espaceadministrateur.php?id=<?=$user_id?>" class="btn btn-outline-secondary" >ESPACE ADMINISTRATEUR</a>   
         <?php }?>
       
       <?php
@@ -68,7 +68,7 @@ $user_id= $_SESSION['utilisateur_id'] ?? '' ;
       <a href="deconnexion.php" class="btn btn-outline-secondary">SE DECONNECTER</a>
       <?php } elseif(empty($_SESSION['utilisateur_id'])) {?>
       <form class="d-flex" role="search">
-       <a href="connexion.php" class="btn btn-outline-success">CONNEXION</a>
+       <a href="connexion.php" class="btn btn-outline-danger">CONNEXION</a>
       </form> 
       <?php } ?>
 

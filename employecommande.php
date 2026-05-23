@@ -39,7 +39,7 @@ require 'header.php';
     <li><a href="employecompte.php?id=<?=$user_id?>" style="text-decoration:none" class="liensecond">INFORMATIONS COMPTE</a></li>
     <li><a href="employemenus.php?id=<?=$user_id?>" style="text-decoration:none" class="liensecond">GESTION DES MENUS</a></li>
     <li><a href="employecommande.php?id=<?=$user_id?>" style="text-decoration:none" class="liensecond">GESTION ET VALIDATION DES COMMANDES </a></li>
-    <li><a href="comclients.php?id=<?=$user_id?>" style="text-decoration:none" class="liensecond">TRAITEMENT DES COMMENTAIRES CLIENTS </a></li>
+    <li><a href="employecomclients.php?id=<?=$user_id?>" style="text-decoration:none" class="liensecond">TRAITEMENT DES COMMENTAIRES CLIENTS </a></li>
     </ul>
 </div>
 
@@ -73,8 +73,8 @@ require 'header.php';
                         <td><?= htmlspecialchars($commande->prix_menu) ?></td>
                         <td><?= htmlspecialchars($commande->adresse_livraison) ?></td>
                         <td><?= htmlspecialchars($commande->date_livraison) ?></td>
-                        <td><a href="" class="btn btn-warning" >Modifier</a></td>
-                        <td><a href="" class="btn btn-danger"  onclick="return confirm('Confirmer suppression ?')">Supprimer</a> </td>
+                        <td><a href="employecommandemodifier.php?=<?=$user_id?>&idcommande=<?=$commande->numero_commande?>" class="btn btn-warning" >Modifier</a></td>
+                        <td><a href="employecommandesupprimer.php?=<?=$user_id?>&idcommande=<?=$commande->numero_commande?>" class="btn btn-danger"  onclick="return confirm('Confirmer suppression ?')">Supprimer</a> </td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>

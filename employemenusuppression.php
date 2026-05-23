@@ -10,23 +10,40 @@ $password = '';
 
 
 $user_id = $_SESSION['utilisateur_id'];
+$idmenu = $_GET['idmenu'] ?? '';
 
-try {
     
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    
-    
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-    
-} catch(PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
-}
+$pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
-$requete14 = $pdo->prepare("SELECT menu_id, titre, presentation, prix_parpersonne, nombre_personne_minimum, description, image1, image2, image3, image4, image5, image6, image7 FROM menu");
-$requete14->execute();
-$menus= $requete14->fetchall();
+
+$requete13= $pdo->prepare("DELETE FROM menu WHERE menu_id =:idmenu");
+$requete13->bindvalue(':idmenu', $idmenu);
+$requete13->execute();
+
+header("Location: employemenus.php?id=$user_id");
+exit();
+
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -52,11 +69,6 @@ require 'header.php';
 
 <h4 class="pstcommande">LES MENUS EN VENTE SUR LE SITE</h4>
 
-<div class="btnrajouter">
-<a  href="employemenurajouter.php" class="btn btn-primary "  >RAJOUTER UN MENU</a>
-</div>
-
-
 <table  class="tablecommande" cellpadding="10" cellspacing="0">
     <thead>
         <tr>
@@ -80,8 +92,8 @@ require 'header.php';
             <td><?= htmlspecialchars($menu->prix_parpersonne) ?></td>
             <td><?= htmlspecialchars($menu->nombre_personne_minimum) ?></td>
             <td><?= htmlspecialchars($menu->description) ?></td>
-            <td><a href="employemenumodification.php?id=<?=$user_id?>&idmenu=<?=$menu->menu_id?>" class="btn btn-warning" >Modifier</a></td>
-            <td><a href="employemenusuppression.php?id=<?=$user_id?>&idmenu=<?=$menu->menu_id?>" class="btn btn-danger"  onclick="return confirm('Confirmer suppression ?')">Supprimer</a> </td>
+            <td><a href="" class="btn btn-warning" >Modifier</a></td>
+            <td><a href="" class="btn btn-danger"  onclick="return confirm('Confirmer suppression ?')">Supprimer</a> </td>
         </tr>
         <?php endforeach; ?>
     </tbody>

@@ -9,7 +9,7 @@ $username = 'root';
 $password = '';
 
 
-$user_id = $_SESSION['utilisateur_id'];
+$user_id = $_SESSION['utilisateur_id'] ??'';
 
 if(!empty($_POST['titre']) && !empty($_POST['email3']) && !empty($_POST['message']) ) 
 {
@@ -22,6 +22,7 @@ if(!empty($_POST['titre']) && !empty($_POST['email3']) && !empty($_POST['message
     $message_titre = $_POST['titre'];
     $message_email = $_POST['email3'];
     $message_contact = $_POST['message'];
+    $date_message = date('Y-m-d');
     
 
     try {
@@ -29,9 +30,9 @@ if(!empty($_POST['titre']) && !empty($_POST['email3']) && !empty($_POST['message
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
         
-        $requete16 = $pdo->prepare("INSERT INTO contact (id_message, titre, email, message_contact)
+        $requete16 = $pdo->prepare("INSERT INTO contact (titre, email, message_contact, date_message)
         VALUES(?, ?, ?, ?) ");
-        $requete16->execute([NULL, $message_titre, $message_email , $message_contact]);
+        $requete16->execute([$message_titre, $message_email, $message_contact, $date_message]);
 
         
     } catch(PDOException $e) {
