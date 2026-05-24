@@ -46,9 +46,9 @@ if(isset($_POST['menuselector'])&& isset($_POST['nombrepers'])&& isset($_POST['a
     $com_prix_menu = $com_nbpers * $menu->prix_parpersonne;
     $com_prix_livraison = 5;
     
-    $requete3= $pdo->prepare("INSERT INTO commande (numero_commande, menu, nombre_personne, adresse_livraison, date_livraison, heure_livraison, prix_menu, date_commande, prix_livraison, statut, id_utilisateur)
-    VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?,?,?) ");
-    $finalinsert=$requete3->execute([NULL, $com_menu, $com_nbpers, $com_adresselivraison, $com_datelivraison, $com_heurelivraison, $com_prix_menu, $com_date_commande, $com_prix_livraison,NULL, $com_idtuilisateur ]);
+    $requete3= $pdo->prepare("INSERT INTO commande (numero_commande, menu, nombre_personne, adresse_livraison, date_livraison, heure_livraison, prix_menu, date_commande, prix_livraison, id_utilisateur)
+    VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ");
+    $finalinsert=$requete3->execute([NULL, $com_menu, $com_nbpers, $com_adresselivraison, $com_datelivraison, $com_heurelivraison, $com_prix_menu, $com_date_commande, $com_prix_livraison, $com_idtuilisateur ]);
 
 
     if($finalinsert=== TRUE){

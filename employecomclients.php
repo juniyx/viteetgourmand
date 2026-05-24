@@ -42,7 +42,7 @@ require 'header.php';
     </ul>
 </div>
 
-<h4> voici la liste des messages clients en attente de réponses</h4>
+<h4 class="pstcommande"> voici la liste des messages clients en attente de réponses</h4>
 
 
 

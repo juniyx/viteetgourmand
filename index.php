@@ -12,19 +12,24 @@ require 'header.php';
 
 <H3 class="ttra">Nos services</H3>
 <p class="ttradescrip">Nous proposons une large gamme de prestations adaptées à vos besoins :</p>
-<ul>
-    <li class="ttradescrippoint" >Cocktails dinatoires</li>
-    <li class="ttradescrippoint" >Buffets froids et chauds</li>
-    <li class="ttradescrippoint" >Repas assis pour mariages, anniversaires et événements d’entreprise</li>
-    <li class="ttradescrippoint" >Plateaux repas pour professionnels</li>
-    <li class="ttradescrippoint" >Services personnalisés (thématiques, régimes spécifiques, etc.)</li>
-</ul>
+
+    <div class="ttradescrippoint" >Cocktails dinatoires</div>
+    <div class="ttradescrippoint" >Buffets froids et chauds</div>
+    <div class="ttradescrippoint" >Repas assis pour mariages, anniversaires et événements d’entreprise</div>
+    <div class="ttradescrippoint" >Plateaux repas pour professionnels</div>
+    <div class="ttradescrippoint" >Services personnalisés (thématiques, régimes spécifiques, etc.)</div>
+
 
 <H3 class="ttra">Pourquoi nous choisir ?</H3>
-<ul>
-    <li class="ttradescrippoint" >Une offre sur mesure adaptée à chaque événement</li>
-    <li class="ttradescrippoint" >Un accompagnement personnalisé de la conception à la réalisation</li>
-</ul>
+
+    <div class="ttradescrippoint" >Une offre sur mesure adaptée à chaque événement</div>
+    <div class="ttradescrippoint" >Un accompagnement personnalisé de la conception à la réalisation</div>
+
+
+    <div class=imgbasdepage>
+<img class="imgbasdepage2" src= "./images/repasnoel2.jpeg" width="80%" height="300px"></img>
+</div>
+
 <?php                
  require 'footer.php';
 ?>

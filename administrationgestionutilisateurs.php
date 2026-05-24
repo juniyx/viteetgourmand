@@ -32,12 +32,14 @@ $utilisateurs= $requete20->fetchAll();
     </ul>
 </div>
 
-<h4 class="pstcommande">GESTION DES UTILISATEURS</h4>
+
+    <h4 class="admgstuti">GESTION DES UTILISATEURS</h4>
+
+    <div class="btnrajouter">
+       <a href="administrationrajouterutil.php?id=<?=$user_id?>" class="btn btn-primary "  >RAJOUTER UN UTILISATEUR</a>
+    </div>
 
 
-<div class="btnrajouter">
-<a  href="administrationrajouterutil.php?id=<?=$user_id?>" class="btn btn-primary "  >RAJOUTER UN UTILISATEUR</a>
-</div>
 
 <table  class="tablecommande" cellpadding="10" cellspacing="0">
                 <thead class="entetetableau">

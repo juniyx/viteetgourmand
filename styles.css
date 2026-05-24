@@ -14,7 +14,19 @@ img{
    border-radius: 5%;
 }
 
+.ttapropos{
+  color: rgb(255, 255, 255);
+  margin-top: 2%;
+  margin-left: 1%;
+}
 
+.pstvg{
+color: rgb(255, 255, 255);
+margin-left: 1%;
+}
+.ttradescrippoint{
+list-style-type: none;
+}
 
 .navbarresecond{
    max-width: 1280px; 
@@ -54,19 +66,21 @@ img{
 
 .ttra{
    color: rgb(241, 244, 247);
-   padding-left:3% ;
+   padding-left:2% ;
    padding-top: 15px;
    padding-bottom:10px ;
 }
 
 .ttradescrip{
    color: rgb(241, 244, 247);
-   padding-left:3% ;
+   padding-left:2% ;
 
 }
 
 .ttradescrippoint{
    color: rgb(241, 244, 247);
+   padding-left:2%
+
    
    
 }
@@ -409,8 +423,9 @@ img{
 }
 
 .pstcommande{
-    color: rgb(209, 212, 128);
-   margin-left: 3%;
+   color: rgb(209, 212, 128);
+   margin-left: 2%;
+   margin-top: 2%;
 }
 
 .rsmcom{
@@ -651,7 +666,7 @@ width: 80%;
 }
 
 .btn-outline-danger{
-    background: linear-gradient(135deg, #dafb01 0%, #0250f8 100%);
+    background: linear-gradient(135deg, #f305bb 0%, #0250f8 100%);
     color: white;
    margin-right: 1%;
 }
@@ -690,4 +705,40 @@ width: 80%;
    color: white; 
    margin-left: 5px;
    
+}
+
+.dmgstuti{
+ color: rgb(12, 114, 198); 
+ margin-left: 3%;
+ margin-top: 4%;
+}
+
+.imgbasdepage{
+   max-width: 1280px;
+   margin-top: 5%;
+   
+   width: 100%;
+   padding: 30px;
+  
+}
+
+.imgbasdepage2{
+   margin-left: 7%;
+}
+
+.vg{
+   color: rgb(141, 0, 96); 
+   margin-left: 32%;
+
+}
+
+.bnvadm{
+   color: rgb(141, 0, 96); 
+   margin-left: 38%;
+
+}
+
+.admgstuti{
+   color: rgb(0, 102, 192); 
+   margin-left: 35%;
 }

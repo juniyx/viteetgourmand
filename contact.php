@@ -9,6 +9,7 @@ $username = 'root';
 $password = '';
 
 
+
 $user_id = $_SESSION['utilisateur_id'] ??'';
 
 if(!empty($_POST['titre']) && !empty($_POST['email3']) && !empty($_POST['message']) ) 
@@ -34,15 +35,21 @@ if(!empty($_POST['titre']) && !empty($_POST['email3']) && !empty($_POST['message
         VALUES(?, ?, ?, ?) ");
         $requete16->execute([$message_titre, $message_email, $message_contact, $date_message]);
 
+       
+
         
     } catch(PDOException $e) {
         error_log($e->getMessage());
-        echo 'Erreur de connexion à la base de données';
+        
     }
     
-
+    
 
 }
+
+
+
+
 ?>
 
 
@@ -50,6 +57,7 @@ if(!empty($_POST['titre']) && !empty($_POST['email3']) && !empty($_POST['message
 require 'header.php';
 ?>
 <div class="conteneur1">
+
 
 <h2 class="ttrcontact">VEUILLEZ NOUS CONTACTER VIA CE FORMULAIRE</h2>
 
