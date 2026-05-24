@@ -666,3 +666,28 @@ width: 80%;
 .btnrajouter{
    margin-left: 82%;
 }
+
+.messageresp{
+   color: white;
+   margin-top: 2%;
+   margin-left: 1%;
+}
+
+.messageresp2{
+   color: white;
+   margin-top: 2%;
+   margin-left: 1%;
+}
+
+.resumessage{
+  color: white; 
+  margin-left: 10px;
+  
+}
+
+
+.resumessageclient{
+   color: white; 
+   margin-left: 5px;
+   
+}

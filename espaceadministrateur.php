@@ -8,13 +8,12 @@ require 'header.php';
 <H1 class="epeadministrateur" >ESPACE ADMINISTRATEUR</H1>
 <div class="navbarresecond">
     <ul class="navsecond">
-    <li><a href="" style="text-decoration:none" class="liensecond">INFORMATIONS COMPTE</a></li>
-    <li><a href="" style="text-decoration:none" class="liensecond">GESTION DES DES COMPTES EMPLOYES</a></li>
-    <li><a href="" style="text-decoration:none" class="liensecond">GESTION DES MENUS</a></li>
-    <li><a href="" style="text-decoration:none" class="liensecond">GESTION ET VALIDATION DES COMMANDES </a></li>
-    <li><a href="" style="text-decoration:none" class="liensecond">GESTION DES AVIS CLIENTS</a></li>
+    <li><a href="administrationinfosperso.php?id=<?=$user_id?>" style="text-decoration:none" class="liensecond">INFORMATIONS COMPTE</a></li>
+    <li><a href="administrationgestionutilisateurs.php?id=<?=$user_id?>" style="text-decoration:none" class="liensecond">GESTION DES TOUS LES COMPTES UTILISATEURS</a></li>
     </ul>
 </div>
+
+
 
 <?php                
  require 'footer.php';

@@ -43,17 +43,17 @@ require 'header.php';
     </ul>
 </div>
 
- <h4> voici les informations générales du Message client</h4>
- <h5>La réponse au client s'effectuera par l'email suivant qu'il a renseigné :<?=$message->email?></h5>
+ <h4 class="messageresp"> Voici les informations générales du Message client</h4>
+ <h5 class="messageresp2" >La réponse au client s'effectuera par l'email suivant qu'il a renseigné : <?=$message->email?></h5>
 
 
    <div class="resumessage">
     <div class="resumessageclient"> ID MESSAGE : <?=$message->id_message ?></div>
-    <div class="resumessageclient"> TITRE: <?=$message->titre?></div>
+    <div class="resumessageclient"> TITRE : <?=$message->titre?></div>
     <div class="resumessageclient"> DATE : <?=$message->date_message ?></div>
-    <div class="resumessageclient"> STATUT : <?= $message->statut_message?>€ TTC</div>
+    <div class="resumessageclient"> STATUT : <?= $message->statut_message?></div>
     <div class="resumessageclient"> MESSAGE : <?=$message->message_contact?></div>
-    <div class="resumessageclient"> EMAIl : <?=$message->email?></div>
+    <div class="resumessageclient"> EMAIL : <?=$message->email?></div>
    </div>
 
     

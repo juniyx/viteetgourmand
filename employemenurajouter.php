@@ -84,7 +84,7 @@ require 'header.php';
     </ul>
 </div>
 
-<h4 class="pstcommande"> REMPLIR LE FORMULAIRE POUR RAJOUTER UN MENU</h4>
+
 
 <div class="resucom2">
 
