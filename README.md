@@ -12,4 +12,4 @@ Explication des étapes :
 
 4)Configurer la connexion à la base de donnée depuis un script php et avec l'utilisation de PDO.
 
-5) Acceder au site en ecrivant dans le navigateur http://localhost/vite&gourmand/ et le script qui est interprété est le "index.php".
+5)Acceder au site en ecrivant dans le navigateur http://localhost/vite&gourmand/ et le script qui est interprété est le "index.php".
